@@ -57,3 +57,4 @@ window.mainloop()
 scan = Tk()
 scan.title("Depot htx hjørring: scan")
 scan.configure(background="white")
+#bich lasagne
