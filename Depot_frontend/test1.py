@@ -1,60 +1,48 @@
-import tkinter as tk
 from tkinter import *
-
-#def
-def click():
-    entered_text=textentry.get() #samler teksten fra knappen
-    output.delete(0.0, END)
-    try:
-        password = kodeord[entered_text]
-    except:
-        password = "Kodeordet er forkert"
-    output.insert(END, password)
-
-#main:
-window = Tk()
-window.title("Depot htx hjørring: forside")
-window.configure(background="white")
-
-#Photo:
-#photo = PhotoImage(file="dwight.jpeg")
-#Label(window, image=photo, bg="black").grid(row=1, column=0, sticky=W)
-
-#create label:
-Label(window, text="Skriv dit kodeord:", bg="white", fg="black", font="none 12 bold").grid(row=1,column=2, sticky=N)
-
-#Text entry:
-textentry = Entry(window, width=30, bg="white")
-textentry.grid(row=2, column=2, sticky=N)
-
-#Button:
-Button(window, text="FORTSÆT", width = 6, command=click).grid(row=3, column=2, sticky=N)
-
-#ny label:
-Label(window, text="\nStatus på kodeord:", bg="white", fg="black", font="none 12 bold").grid(row=4, column=2, sticky=W)
-
-#text boks:
-output = Text(window, width=30, height=1, wrap=WORD, background="white")
-output.grid(row=5, column=2, columnspan=1, sticky=W)
-def close_window():
-    window.destroy()
-    exit()
-
-#exit label:
-Button(window, text="Forlad", width = 7, command=close_window).grid(row=8,column=2, sticky=N)
-def close_window():
-    window.destroy()
-    exit()
+import sys
 
 
-#Show window:
-kodeord = {'andl':'Kodeordet er godkendt','niels':'Kodeordet er godkendt','jakob':'Drengen er eftersøgt'}
+def command1():
+    if entry1.get() == 'admin' and entry2.get() == 'password' or entry1.get() == 'test' and entry2.get() == 'pass':
+        root.deiconify()
+        top.destroy()
 
-#Label.pack()
-window.mainloop()
 
-#######SCAN_VARER#######
-scan = Tk()
-scan.title("Depot htx hjørring: scan")
-scan.configure(background="white")
-#bich lasagne
+def command2():
+    top.destroy()
+    root.destroy()
+    sys.exit()
+
+
+root = Tk()
+top = Toplevel()
+
+top.geometry('300x260')
+top.title('LOGIN SCREEN')
+top.configure(background='white')
+photo2 = PhotoImage(file='1.gif')
+photo = Label(top, image=photo2, bg='white')
+lbl1 = Label(top, text='Username', font=('Helvetica',10))
+entry1 = Entry(top)
+lbl2 = Label(top, text='Password', font=('Helvetica', 10))
+entry2 = Entry(top, show="*")
+button2 = Button(top, text='Cancel', command=lambda: command2())
+
+entry2.bind('<Return>', command1)
+
+lbl3 = Label(top, text='Copyright Login Screen 2021', font=('Arial',9))
+
+photo.pack()
+lbl1.pack()
+entry1.pack()
+lbl2.pack()
+entry2.pack()
+button2.pack()
+lbl3.pack()
+
+root.title('Main Screen')
+root.configure(background='white')
+root.geometry('855x650')
+
+root.withdraw()
+root.mainlopp()
